@@ -1,4 +1,3 @@
-
 USE employee_db;
 
 INSERT INTO department (department_name)
@@ -41,8 +40,7 @@ VALUES ("Steve", "Rogers", 1),
        ("Peter", "Quill", 9),
        ("Sam", "Wilson", 9),
        ("Matt", "Murdoch", 10),
-       ("Jennifer", "Walters", 10);
+       ("Jennifer", "Walters", 10),
        ("Wade", "Wilson", 11),
        ("Luke", "Cage", 11),
-       ("Thor", "Odinson", 11),
-       
+       ("Thor", "Odinson", 11);
