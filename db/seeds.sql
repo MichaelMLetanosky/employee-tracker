@@ -2,18 +2,47 @@
 USE employee_db;
 
 INSERT INTO department (department_name)
-VALUES ("Lion King"),
-       ("The Godfather"),
-       ("West Side Story"),
-       ("Parasite"),
-       ("The Wizard of Oz");
+VALUES ("Human Resources"),
+       ("Sales"),
+       ("Engineering"),
+       ("Finance"),
+       ("Legal");
 
-INSERT INTO reviews (movie_id, review)
-VALUES (1, "Zazu is underrated. Give that hornbill a sequel!"),
-       (2, "I'm gonna make him an offer you can't refuse, watch this movie"),
-       (1, "Scar is the lion everyone loves to hate"),
-       (3, "Ten years of ballet and three years of tap to join a gang in this neighborhood"),
-       (5, "The tin man gave a metallic, hollow performance"),
-       (1, "Hakuna matata"),
-       (5, "Those flying monkeys are nightmare fuel!");
+INSERT INTO role (title, salary, department_id)
+VALUES ("HR Manager", 90000, 1),
+       ("HR Associate", 60000, 1),
+       ("Sales Manager", 120000, 2),
+       ("Sales Associate", 45000, 2),
+       ("Engineering Manager", 110000, 3),
+       ("Senior Software Engineer", 85000, 3),
+       ("Software Engineer", 65000, 3),
+       ("Finance Manager", 85000, 4),
+       ("Accountant", 60000, 4),
+       ("Corporate Lawyer", 130000, 5),
+       ("Paralegal", 50000, 5);
+
+INSERT INTO employee (first_name, last_name, role_id)
+VALUES ("Steve", "Rogers", 1),
+       ("Doreen", "Green", 2),
+       ("Bucky", "Barnes", 2),
+       ("Tony", "Stark", 3),
+       ("Rocket", "Raccoon", 4),
+       ("James", "Rhodes", 4),
+       ("Natasha", "Romanoff", 4),
+       ("Reed", "Richards", 5),
+       ("Bruce", "Banner", 6),
+       ("Carol", "Danvers", 6),
+       ("Scott", "Lang", 7),
+       ("Miles", "Morales", 7),
+       ("Sue", "Storm", 7),
+       ("Kamala", "Khan", 7),
+       ("Clint", "Barton", 7),
+       ("Ororo", "Monroe", 8),
+       ("Peter", "Quill", 9),
+       ("Sam", "Wilson", 9),
+       ("Matt", "Murdoch", 10),
+       ("Jennifer", "Walters", 10);
+       ("Wade", "Wilson", 11),
+       ("Luke", "Cage", 11),
+       ("Thor", "Odinson", 11),
        
