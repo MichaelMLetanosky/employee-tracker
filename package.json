@@ -1,0 +1,23 @@
+{
+  "name": "employee-tracker",
+  "version": "1.0.0",
+  "description": "terminal based tracker of employees, roles, and departments",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MichaelMLetanosky/employee-tracker.git"
+  },
+  "author": "Michael Letanosky",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/MichaelMLetanosky/employee-tracker/issues"
+  },
+  "homepage": "https://github.com/MichaelMLetanosky/employee-tracker#readme",
+  "dependencies": {
+    "inquirer": "^8.2.4",
+    "mysql2": "^2.3.3"
+  }
+}
