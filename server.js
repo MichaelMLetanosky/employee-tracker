@@ -25,6 +25,19 @@ const db = mysql.createConnection(
     console.log(`Connected to the employee_db database.`)
 );
 
+const departmentQuestions = [{
+    name: "name", type: "input",
+    message: "What is the name of the department?",
+}]
+
+const roleQuestions = [{
+    name: "title", type: "input",
+    message: "What is the role's title?",
+    },{
+    name: "name", type: "input",
+    message: "What is the name?",
+}]
+
 //Inquirer here
 function mainMenu() {
     inquirer
@@ -54,16 +67,13 @@ function mainMenu() {
                 viewAll(`employees`);
                 break;
             case `Add a department`:
-                viewAllDept();
-                console.log(`setting up a new department`);
+                addDepartment();
                 break;
             case `Add a role`:
-                viewAllDept();
-                console.log(`setting up a new role`);
+                addData(`role`);
                 break;
             case `Add an employee`:
-                viewAllDept();
-                console.log(`setting up a new employee`);
+                addData(`employee`);
                 break;
             case `Update an employee role`:
                 viewAllDept();
@@ -78,12 +88,45 @@ function mainMenu() {
 
 function viewAll(table) {
     console.log(`Pulling all ${table}`)
-    db.query(`SELECT * FROM ${table} ORDER BY 'id'`, function (err, results) {
+    db.query(`SELECT * FROM ${table} ORDER BY id`, function (err, results) {
         if (err) {throw err};
         console.table(results);
         mainMenu();
     });
 };
+
+function addDepartment() {
+    console.log(`Adding a new department`)
+    inquirer.prompt(departmentQuestions)
+    .then((answers) => {
+        db.query(`INSERT INTO departments (department_name) VALUES ("${answers.name}")`, function (err, results) {
+            if (err) {throw err};
+            mainMenu();
+        });
+    })
+}
+
+function addDepartment() {
+    console.log(`Adding a new department`)
+    inquirer.prompt(departmentQuestions)
+    .then((answers) => {
+        db.query(`INSERT INTO departments (department_name) VALUES ("${answers.name}")`, function (err, results) {
+            if (err) {throw err};
+            mainMenu();
+        });
+    })
+}
+
+function addDepartment() {
+    console.log(`Adding a new department`)
+    inquirer.prompt(departmentQuestions)
+    .then((answers) => {
+        db.query(`INSERT INTO departments (department_name) VALUES ("${answers.name}")`, function (err, results) {
+            if (err) {throw err};
+            mainMenu();
+        });
+    })
+}
 
 
 mainMenu();
