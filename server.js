@@ -23,7 +23,7 @@ const db = mysql.createConnection(
       database: 'employee_db'
     },
     console.log(`Connected to the employee_db database.`)
-  );
+);
 
 //Inquirer here
 function mainMenu() {
@@ -45,39 +45,45 @@ function mainMenu() {
     .then((answers) => {
         switch (answers.choice) {
             case `View all departments`:
-                viewAllDept();
+                viewAll(`departments`);
                 break;
             case `View all roles`:
-                console.log(`pulling all roles`);
+                viewAll(`roles`);
                 break;
             case `View all employees`:
-                console.log(`pulling all employees`);
+                viewAll(`employees`);
                 break;
             case `Add a department`:
+                viewAllDept();
                 console.log(`setting up a new department`);
                 break;
             case `Add a role`:
+                viewAllDept();
                 console.log(`setting up a new role`);
                 break;
             case `Add an employee`:
+                viewAllDept();
                 console.log(`setting up a new employee`);
                 break;
             case `Update an employee role`:
+                viewAllDept();
                 console.log(`Changing the role of an employee`);
                 break;
             case `Exit`:
                 process.exit();
         }
     })
-    .then(() => {
-        mainMenu();
-    })
     .catch((e) => {throw e})
 };
 
-function viewAllDept() {
-    console.log(`pulling all departments`);
-    
+function viewAll(table) {
+    console.log(`Pulling all ${table}`)
+    db.query(`SELECT * FROM ${table} ORDER BY 'id'`, function (err, results) {
+        if (err) {throw err};
+        console.table(results);
+        mainMenu();
+    });
 };
+
 
 mainMenu();

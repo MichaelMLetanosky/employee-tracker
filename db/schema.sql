@@ -3,25 +3,25 @@ CREATE DATABASE employee_db;
 
 USE employee_db;
 
-CREATE TABLE department (
+CREATE TABLE departments (
   id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
   department_name VARCHAR(255) UNIQUE NOT NULL
 );
 
-CREATE TABLE role (
+CREATE TABLE roles (
   id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
   title VARCHAR(255) UNIQUE NOT NULL,
   salary DECIMAL UNSIGNED NOT NULL,
   department_id INT UNSIGNED NOT NULL,
   FOREIGN KEY (department_id)
-  REFERENCES department(id)
+  REFERENCES departments(id)
 );
 
-CREATE TABLE employee (
+CREATE TABLE employees (
   id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
   first_name VARCHAR(255) NOT NULL,
   last_name VARCHAR(255) NOT NULL,
   role_id INT UNSIGNED NOT NULL,
   FOREIGN KEY (role_id)
-  REFERENCES role(id)
+  REFERENCES roles(id)
 );
