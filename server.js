@@ -41,6 +41,17 @@ const roleQuestions = [{
     message: "What is the id of the department the role belongs to?",
 }]
 
+const employeeQuestions = [{
+    name: "first_name", type: "input",
+    message: "What is their first name?",
+    },{
+    name: "last_name", type: "input",
+    message: "What is their last name?",
+    },{
+    name: "role_id", type: "input",
+    message: "What is the id of the department the role belongs to?",
+}]
+
 //Inquirer here
 function mainMenu() {
     inquirer
@@ -76,7 +87,7 @@ function mainMenu() {
                 addRole();
                 break;
             case `Add an employee`:
-                addData(`employee`);
+                addEmployee();
                 break;
             case `Update an employee role`:
                 viewAllDept();
@@ -120,5 +131,15 @@ function addRole() {
     })
 }
 
+function addEmployee() {
+    console.log(`Adding a new employee`)
+    inquirer.prompt(employeeQuestions)
+    .then((answers) => {
+        db.query(`INSERT INTO roles (title, salary, department_id) VALUES ("${answers.title}", ${answers.salary}, ${answers.department_id})`, function (err, results) {
+            if (err) {throw err};
+            mainMenu();
+        });
+    })
+}
 
 mainMenu();
