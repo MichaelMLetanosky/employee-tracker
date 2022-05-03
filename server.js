@@ -70,7 +70,7 @@ function mainMenu() {
                 addDepartment();
                 break;
             case `Add a role`:
-                addData(`role`);
+                addRole();
                 break;
             case `Add an employee`:
                 addData(`employee`);
@@ -106,20 +106,9 @@ function addDepartment() {
     })
 }
 
-function addDepartment() {
-    console.log(`Adding a new department`)
-    inquirer.prompt(departmentQuestions)
-    .then((answers) => {
-        db.query(`INSERT INTO departments (department_name) VALUES ("${answers.name}")`, function (err, results) {
-            if (err) {throw err};
-            mainMenu();
-        });
-    })
-}
-
-function addDepartment() {
-    console.log(`Adding a new department`)
-    inquirer.prompt(departmentQuestions)
+function addRole() {
+    console.log(`Adding a new role`)
+    inquirer.prompt(roleQuestions)
     .then((answers) => {
         db.query(`INSERT INTO departments (department_name) VALUES ("${answers.name}")`, function (err, results) {
             if (err) {throw err};
