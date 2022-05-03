@@ -49,7 +49,15 @@ const employeeQuestions = [{
     message: "What is their last name?",
     },{
     name: "role_id", type: "input",
-    message: "What is the id of the department the role belongs to?",
+    message: "What is the id of their role?",
+}]
+
+const roleUpdateQuestions = [{
+    name: "employee_id", type: "input",
+    message: "What is the employee ID of the employee you want to change?",
+    },{
+    name: "role_id", type: "input",
+    message: "What is the role id of their new role?",
 }]
 
 //Inquirer here
@@ -90,8 +98,7 @@ function mainMenu() {
                 addEmployee();
                 break;
             case `Update an employee role`:
-                viewAllDept();
-                console.log(`Changing the role of an employee`);
+                updateEmployeeRole();
                 break;
             case `Exit`:
                 process.exit();
@@ -101,7 +108,7 @@ function mainMenu() {
 };
 
 function viewAll(table) {
-    console.log(`Pulling all ${table}`)
+    console.log(`Pulling all ${table}`);
     db.query(`SELECT * FROM ${table} ORDER BY id`, function (err, results) {
         if (err) {throw err};
         console.table(results);
@@ -110,7 +117,7 @@ function viewAll(table) {
 };
 
 function addDepartment() {
-    console.log(`Adding a new department`)
+    console.log(`Adding a new department`);
     inquirer.prompt(departmentQuestions)
     .then((answers) => {
         db.query(`INSERT INTO departments (department_name) VALUES ("${answers.name}")`, function (err, results) {
@@ -118,10 +125,10 @@ function addDepartment() {
             mainMenu();
         });
     })
-}
+};
 
 function addRole() {
-    console.log(`Adding a new role`)
+    console.log(`Adding a new role`);
     inquirer.prompt(roleQuestions)
     .then((answers) => {
         db.query(`INSERT INTO roles (title, salary, department_id) VALUES ("${answers.title}", ${answers.salary}, ${answers.department_id})`, function (err, results) {
@@ -129,17 +136,28 @@ function addRole() {
             mainMenu();
         });
     })
-}
+};
 
 function addEmployee() {
-    console.log(`Adding a new employee`)
+    console.log(`Adding a new employee`);
     inquirer.prompt(employeeQuestions)
     .then((answers) => {
-        db.query(`INSERT INTO roles (title, salary, department_id) VALUES ("${answers.title}", ${answers.salary}, ${answers.department_id})`, function (err, results) {
+        db.query(`INSERT INTO employees (first_name, last_name, role_id) VALUES ("${answers.first_name}", "${answers.last_name}", ${answers.role_id})`, function (err, results) {
             if (err) {throw err};
             mainMenu();
         });
     })
-}
+};
+
+function updateEmployeeRole() {
+    console.log(`Adding a new employee`);
+    inquirer.prompt(roleUpdateQuestions)
+    .then((answers) => {
+        db.query(`UPDATE employees SET role_id = ${answers.role_id} WHERE id = ${answers.employee_id}`, function (err, results) {
+            if (err) {throw err};
+            mainMenu();
+        });
+    })
+};
 
 mainMenu();
