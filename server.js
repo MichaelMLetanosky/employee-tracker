@@ -34,8 +34,11 @@ const roleQuestions = [{
     name: "title", type: "input",
     message: "What is the role's title?",
     },{
-    name: "name", type: "input",
-    message: "What is the name?",
+    name: "salary", type: "input",
+    message: "What is the salary for the role?",
+    },{
+    name: "department_id", type: "input",
+    message: "What is the id of the department the role belongs to?",
 }]
 
 //Inquirer here
@@ -110,7 +113,7 @@ function addRole() {
     console.log(`Adding a new role`)
     inquirer.prompt(roleQuestions)
     .then((answers) => {
-        db.query(`INSERT INTO departments (department_name) VALUES ("${answers.name}")`, function (err, results) {
+        db.query(`INSERT INTO roles (title, salary, department_id) VALUES ("${answers.title}", ${answers.salary}, ${answers.department_id})`, function (err, results) {
             if (err) {throw err};
             mainMenu();
         });
