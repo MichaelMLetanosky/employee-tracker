@@ -1,3 +1,21 @@
+# Employee Tracker
+
+## Description
+
+  A command line based tracker for a company's departments, roles, and employees. Is capable of viewing, adding, and modifying entries.
+
+## Table of Contents
+---
+1. [Instructions](#instructions)
+---
+
+## Instructions
+
+  [![A gif that shows the command-line employee management application.](./Assets/employee-tracker-video.gif)](https://drive.google.com/file/d/1u3ixXrQweoA8Gx5zHj6K1LEAyh8vp1ZY/view)
+
+  The user navigates a menu from the command line to select what action they would like to take, such as viewing all roles, adding a department, or altering an employee. When finished they may exit.
+
+
 # 12 SQL: Employee Tracker
 
 ## Your Task
