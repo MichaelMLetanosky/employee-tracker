@@ -15,6 +15,8 @@
 
   The user navigates a menu from the command line to select what action they would like to take, such as viewing all roles, adding a department, or altering an employee. When finished they may exit.
 
+  code can be found at https://github.com/MichaelMLetanosky/employee-tracker
+
 
 # 12 SQL: Employee Tracker
 
